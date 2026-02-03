@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import MarkdownContent from '@/components/MarkdownContent';
 
 export const dynamic = 'force-dynamic';
 
@@ -41,11 +40,7 @@ export default async function PostPage({ params }: Props) {
             <h1 className="text-3xl font-bold mt-2">{post.title}</h1>
           </header>
           
-          <div className="prose prose-invert prose-zinc max-w-none">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {post.content}
-            </ReactMarkdown>
-          </div>
+          <MarkdownContent content={post.content} />
         </article>
       </div>
     </main>
