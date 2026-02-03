@@ -28,10 +28,15 @@ export function getAllPosts(): Post[] {
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
+      // date가 Date 객체일 수 있으므로 문자열로 변환
+      const dateValue = data.date instanceof Date 
+        ? data.date.toISOString().split('T')[0]
+        : (data.date || new Date().toISOString().split('T')[0]);
+
       return {
         slug,
-        title: data.title || slug,
-        date: data.date || new Date().toISOString().split('T')[0],
+        title: String(data.title || slug),
+        date: String(dateValue),
         content,
         excerpt: content.slice(0, 200) + (content.length > 200 ? '...' : ''),
       };
@@ -51,10 +56,15 @@ export function getPostBySlug(slug: string): Post | null {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
+  // date가 Date 객체일 수 있으므로 문자열로 변환
+  const dateValue = data.date instanceof Date 
+    ? data.date.toISOString().split('T')[0]
+    : (data.date || new Date().toISOString().split('T')[0]);
+
   return {
     slug,
-    title: data.title || slug,
-    date: data.date || new Date().toISOString().split('T')[0],
+    title: String(data.title || slug),
+    date: String(dateValue),
     content,
   };
 }
