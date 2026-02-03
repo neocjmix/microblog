@@ -4,6 +4,7 @@ import { getAllSlugs, getPostBySlug, Lang } from '@/lib/posts';
 import { detectLang } from '@/lib/locale';
 import MarkdownContent from '@/components/MarkdownContent';
 import LangSwitcher from '@/components/LangSwitcher';
+import Comments from '@/components/Comments';
 
 export const dynamic = 'force-dynamic';
 
@@ -59,6 +60,8 @@ export default async function PostPage({ params, searchParams }: Props) {
           
           <MarkdownContent content={post.content} />
         </article>
+        
+        <Comments lang={post.lang} />
       </div>
     </main>
   );
