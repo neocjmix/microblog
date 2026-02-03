@@ -2,8 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-// Obsidian vault의 posts 폴더 경로
-const postsDirectory = path.join(process.env.HOME || '', 'Documents/microblog-vault/posts');
+// 프로젝트 내 posts 폴더 (Vercel 배포용)
+const postsDirectory = path.join(process.cwd(), 'content/posts');
 
 export interface Post {
   slug: string;
