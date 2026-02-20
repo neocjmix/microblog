@@ -49,3 +49,4 @@ This repo is now configured to deploy automatically on every push to `main` via 
 - `Vercel` 프로덕션 배포 실행
 
 3) 필요 시 Actions 탭에서 **Deploy to Vercel** 워크플로우를 `Run workflow`로 수동 실행 가능
+
